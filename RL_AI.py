@@ -1,6 +1,6 @@
 import random
 import numpy as np
-from Snake_Game import SnakeGame
+from Snake_Game import SnakeGame, Direction, rotate_left, rotate_right
 
 class QLearningAgent:
 
@@ -14,9 +14,40 @@ class QLearningAgent:
 
     def get_state(self, game):
         head = game.snake[0]
+
+        point_l = game.move(rotate_left(game.direction)) # Left
+        point_r = game.move(rotate_right(game.direction)) # Right
+        point_s = game.move(game.direction) # Straight
+
+        dir_l = game.direction == Direction.LEFT
+        dir_r = game.direction == Direction.RIGHT
+        dir_u = game.direction == Direction.UP
+        dir_d = game.direction == Direction.DOWN
+
         food = game.food
-        # Simplified state (x, y positions of the snake head and food)
-        return (head.x, head.y, food.x, food.y)
+        
+        state = [
+            # Danger straight
+            game._is_collision(point_s),
+            # Danger right
+            game._is_collision(point_r),
+            # Danger left
+            game._is_collision(point_l),
+
+            # Move direction
+            dir_l,
+            dir_r,
+            dir_u,
+            dir_d,
+
+            # Food location
+            food.x < head.x, # food left
+            food.x > head.x, # food right
+            food.y < head.y, # food up
+            food.y > head.y # food down
+        ]
+
+        return tuple(int(s) for s in state)
     
     def get_q_value(self, state, action):
         if state not in self.q_table:
@@ -27,7 +58,7 @@ class QLearningAgent:
         max_future_q = np.max(self.q_table.get(next_state, np.zeros(len(self.actions))))
         current_q = self.get_q_value(state, action)
         new_q = current_q + self.learning_rate * (reward + self.discount_factor * max_future_q - current_q)
-        self.q_table[state, action] = new_q
+        self.q_table[state][action] = new_q
 
     def choose_action(self, state):
         if random.uniform(0,1) < self.exploration_rate:

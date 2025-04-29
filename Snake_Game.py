@@ -104,7 +104,22 @@ class SnakeGame:
         if pt in self.snake[1:]:
             return True
         
-        return False   
+        return False  
+    
+    def move(self, direction):
+        x = self.snake[0].x
+        y = self.snake[0].y
+        if direction == Direction.RIGHT:
+            x += BLOCK_SIZE
+        elif direction == Direction.LEFT:
+            x -= BLOCK_SIZE
+        elif direction == Direction.DOWN:
+            y += BLOCK_SIZE
+        elif direction == Direction.UP:
+            y -= BLOCK_SIZE
+        
+        return Point(x,y)
+         
     
     def _update_ui(self):
         self.display.fill(BLACK)
@@ -145,3 +160,23 @@ class SnakeGame:
             y -= BLOCK_SIZE
 
         self.head = Point(x, y)
+
+def rotate_left(direction):
+    if direction == Direction.RIGHT:
+        return Direction.UP
+    if direction == Direction.UP:
+        return Direction.LEFT
+    if direction == Direction.LEFT:
+        return Direction.DOWN
+    if direction == Direction.DOWN:
+        return Direction.RIGHT
+    
+def rotate_right(direction):
+    if direction == Direction.RIGHT:
+        return Direction.DOWN
+    if direction == Direction.DOWN:
+        return Direction.LEFT
+    if direction == Direction.LEFT:
+        return Direction.UP
+    if direction == Direction.UP:
+        return Direction.RIGHT

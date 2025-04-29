@@ -1,1 +1,2 @@
-Pygame==2.6.1 
+Pygame==2.6.1
+Numpy==2.2.5 

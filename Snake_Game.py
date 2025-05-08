@@ -119,7 +119,6 @@ class SnakeGame:
             y -= BLOCK_SIZE
         
         return Point(x,y)
-         
     
     def _update_ui(self):
         self.display.fill(BLACK)

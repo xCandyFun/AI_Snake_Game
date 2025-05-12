@@ -1,2 +1,4 @@
 Pygame==2.6.1
 Numpy==2.2.5 
+Matplotlib==3.10.3
+Ipython==9.2.0

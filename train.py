@@ -16,7 +16,7 @@ def plot(scores):
         plt.show()
 
 def train():
-    total_episodes = 1000
+    total_episodes = 500
     actions = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]  # Straight, Right, Left
     agent = QLearningAgent(actions)
     scores = []
@@ -43,7 +43,7 @@ def train():
 
         agent.decay_exploration_rate()
         scores.append(score)
-        print(f"Episode: {episode + 1}/1000, Score: {score}, Epsilon: {agent.exploration_rate:.4f}")
+        print(f"Episode: {episode + 1}/{total_episodes}, Score: {score}, Epsilon: {agent.exploration_rate:.4f}")
 
     # Final plot after training
     plot(scores)

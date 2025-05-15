@@ -16,7 +16,7 @@ def plot(scores):
         plt.show()
 
 def train():
-    total_episodes = 500
+    total_episodes = 1000
     actions = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]  # Straight, Right, Left
     agent = QLearningAgent(actions)
     scores = []

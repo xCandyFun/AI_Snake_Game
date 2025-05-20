@@ -48,18 +48,6 @@ python play.py
 - Training results are visualized using a line chart showing the score per episode.
 - The average score improves over time, indicating that the agent is learning effective strategies.
 
-## 💡 Possible Improvements
-
-- Train over more episodes to improve performance
-- Switch to a more advanced algorithm like Deep Q-Networks (DQN)
-- Add more features to the state, e.g., snake length or distance to food
-
-## 📝 Report
-
-A short report explaining the model, data handling, and results is available in:  
-📄 `rapport_step2.pdf`  
-(or `.docx` if preferred)
-
 ## 👤 Author
 
 - ME

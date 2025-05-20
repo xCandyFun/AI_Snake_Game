@@ -28,7 +28,7 @@ This project is an implementation of an AI agent that learns to play Snake using
 
 ### Install dependencies
 ```bash
-pip install pygame matplotlib
+pip install -r requirements.txt
 ```
 
 ### Train the Model
@@ -62,6 +62,4 @@ A short report explaining the model, data handling, and results is available in:
 
 ## 👤 Author
 
-- [Your Name Here]
-- Course: [Course Name or Code]
-- Term: [e.g., Spring 2025]
+- ME
